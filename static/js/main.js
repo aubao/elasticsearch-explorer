@@ -26,8 +26,8 @@ function fetchDocuments()
 	if(db_index!=undefined&&db_doctype!=undefined&&db_index!=""&&db_doctype!="")
 	{
 		max_docs = $('input[name="max_docs"]').val();
-		if( max_docs==undefined || max_docs=="" || !(max_docs.match(/\d+/g)) )
-			max_docs = 1;
+		if( max_docs==undefined || max_docs=="")
+			max_docs = 0;
 		$.post('/details',{
 			db_index: db_index,
 			db_doctype: db_doctype,

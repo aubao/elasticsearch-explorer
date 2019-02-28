@@ -21,8 +21,8 @@ def es_update(index,doc_type,doc_id,body,refresh=False):
 	if refresh==True:
 		es.indices.refresh(index=index)
 		
-def es_search(index,db_query={"query": {"match_all": {}}},filter_source=False,size=1000):
-	res = es.search(index=index, body=db_query, filter_path=['hits.hits._id','hits.hits._type','hits.hits._source','hits.total'],size=size)
+def es_search(db_query,filter_source=False,size=1000):
+	res = es.search(body=db_query,size=size)
 	if filter_source==False:
 		return res['hits']
 	else:

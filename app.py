@@ -27,8 +27,8 @@ def index():
 			for key in sorted(d):
 				indices[indexName][key] = d[key]			
 
-		indices = dict(sorted(indices.iteritems()))
+#		indices = dict(sorted(indices.iteritems()))
 		return render_template('index.html',indices=indices)
 
 if __name__ == '__main__':
-	app.run(host='0.0.0.0',port=5001)
+	app.run(host='0.0.0.0',port=5001,debug=True)

@@ -9,15 +9,14 @@ def details():
 	if request.method == 'POST':
 		db_index = request.form['db_index']
 		db_doctype = request.form['db_doctype']
-		max_documents_to_fetch = request.form['max_docs']
-
-		q = {
-			"filter" : {
-				"type" : {
-					"value" : db_doctype
-				}
-			}
-		}
-		
-		res = es_search(db_index,q,False,max_documents_to_fetch)
-		return json.dumps(res["hits"])
+		word = request.form['max_docs']
+                print word
+       		q = {
+    "query": {
+        "match": {
+            "author": word
+        }
+    }
+}		
+		res = es_search(q,False)
+                return json.dumps(res["hits"])
